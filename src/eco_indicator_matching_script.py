@@ -14,11 +14,11 @@ SRC_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(SRC_DIR)
 
 # 2. BIGQUERY CONFIGURATION
-GCP_PROJECT_ID = "GCP_PROJECT_ID" 
-GBIF_BQ_TABLE = "GBIF_BQ_TABLE" 
+GCP_PROJECT_ID = "geo-global-ecosystems-atlas" 
+GBIF_BQ_TABLE = "geo-global-ecosystems-atlas.gbif.gbif_2016-2026_basisofrec_spat_thinned" 
 
 # 3. LOCAL FILES
-MAPPING_CSV = os.path.join(ROOT_DIR, 'data', 'mapping', 'eco_indicator_sp.csv')
+MAPPING_CSV = os.path.join(ROOT_DIR, 'data', 'mapping', 'eco_ind_sp_list.csv')
 
 # 4. AUTO-FOLDER GENERATION
 OUTPUT_FOLDER_NAME = f"{REGION_NAME}_Outputs_{datetime.now().strftime('%Y%m%d')}"
