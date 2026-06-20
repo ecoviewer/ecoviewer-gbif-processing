@@ -12,11 +12,11 @@ INPUT_CSV = os.path.join(ROOT_DIR, 'data', 'outputs', 'GBIF_With_Elev_Aridity.cs
 BOUNDS_FILE = os.path.join(ROOT_DIR, 'data', 'mapping', 'latitudinal_bounds.txt')
 
 # Output Paths
-OUTPUT_DIR = os.path.join(ROOT_DIR, 'data', 'outputs', 'environment_mask_outputs')
+OUTPUT_DIR = os.path.join(ROOT_DIR, 'data', 'outputs', 'environment_mask_outputs_v6')
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-FINAL_OUTPUT_CSV = os.path.join(OUTPUT_DIR, 'Global_Final_Environment_Masked.csv')
-FINAL_OUTPUT_FGB = os.path.join(OUTPUT_DIR, 'Global_Final_Environment_Masked.fgb')
+FINAL_OUTPUT_CSV = os.path.join(OUTPUT_DIR, 'global_gbif_v6.csv')
+FINAL_OUTPUT_FGB = os.path.join(OUTPUT_DIR, 'global_gbif_v6.fgb')
 # =================================================
 
 def parse_bounds(filepath):
@@ -65,7 +65,7 @@ def run_environment_pipeline():
         print("  > Warning: .geo column not found. Continuing with existing coordinates.")
 
     # =========================================================
-    # STEP 4: ARIDITY INDEX FILTERING
+    # STEP 4: ARIDITY INDEX FILTERING (UPDATED)
     # =========================================================
     print("\n4. Applying Aridity Index Rules...")
     
@@ -77,14 +77,33 @@ def run_environment_pipeline():
         
     if aridity_col in df.columns:
         is_dry = df[aridity_col] <= 300
-        is_tf_or_t7 = df['Matching EFG, Biome'].str.startswith('TF') | df['Matching EFG, Biome'].str.startswith('T7')
-        mask_to_drop = is_dry & (~is_tf_or_t7)
+        
+        # 1. Identify groups allowed to survive completely unmodified
+        is_protected = (
+            df['Matching EFG, Biome'].str.startswith('TF') | 
+            df['Matching EFG, Biome'].str.startswith('T7') | 
+            (df['Matching EFG, Biome'] == 'T5.5')
+        )
+        
+        # 2. Identify T5 groups targeted for desert classification conversion (excluding T5.5)
+        is_any_t5 = df['Matching EFG, Biome'].str.startswith('T5.') | (df['Matching EFG, Biome'] == 'T5')
+        is_convertible_t5 = is_any_t5 & (df['Matching EFG, Biome'] != 'T5.5')
+        
+        # Apply the conversion to valid desert elements within the dry threshold
+        mask_t5_convert = is_dry & is_convertible_t5
+        df.loc[mask_t5_convert, 'Matching EFG, Biome'] = 'T5'
+        df.loc[mask_t5_convert, 'Matching EFG, Biome, Realm'] = 'Deserts and semi-deserts'
+        df.loc[mask_t5_convert, 'pixel value'] = '#DFB664'
+        print(f"  > Standardized {mask_t5_convert.sum():,} dry T5 sub-group points to the main Desert Biome.")
+        
+        # 3. Drop any other non-applicable points within the dry mask
+        mask_to_drop = is_dry & (~is_protected) & (~is_convertible_t5)
         
         initial_count = len(df)
         df = df[~mask_to_drop].copy()
         summary_stats['dropped_aridity'] = initial_count - len(df)
         
-        print(f"  > Dropped {summary_stats['dropped_aridity']:,} points where Aridity <= 300 and Biome is not TF/T7.")
+        print(f"  > Dropped {summary_stats['dropped_aridity']:,} unmapped points found in hyper-arid zones.")
     else:
         print("  > Error: Aridity column not found! Skipping Aridity filter.")
 
@@ -98,6 +117,7 @@ def run_environment_pipeline():
     
     is_t13 = df['Matching EFG, Biome'] == 'T1.3'
     is_t4 = df['Matching EFG, Biome'].str.startswith('T4.') | (df['Matching EFG, Biome'] == 'T4')
+    is_t63 = df['Matching EFG, Biome'] == 'T6.3'
     
     in_tropics = (lat <= bounds['Tropical North']) & (lat >= bounds['Tropical South'])
 
@@ -125,6 +145,14 @@ def run_environment_pipeline():
     df.loc[mask_t4_high, 'pixel value'] = '#D7D7D7'
     print(f"  > Converted {mask_t4_high.sum():,} high-elevation T4 points to T6.")
 
+    # Rule D: T6.3 OUTSIDE polar bounds -> Convert to T6.4
+    mask_t63_out = is_t63 & (lat > bounds['Polar South']) & (lat < bounds['Polar North'])
+    df.loc[mask_t63_out, 'Matching EFG, Biome'] = 'T6.4'
+    if 'Matching EFG, Biome (full name)' in df.columns:
+        df.loc[mask_t63_out, 'Matching EFG, Biome (full name)'] = 'Temperate alpine grasslands and shrublands'
+    df.loc[mask_t63_out, 'pixel value'] = '#A8A8A8'
+    print(f"  > Converted {mask_t63_out.sum():,} out-of-bounds T6.3 points to T6.4.")
+
     # =========================================================
     # STEP 6: TAXONOMIC SPOT FIXES
     # =========================================================
@@ -132,7 +160,6 @@ def run_environment_pipeline():
     
     # 1. Avicennia marina override (Mangroves)
     if 'species' in df.columns:
-        # Using .str.strip() as a safety net against invisible trailing spaces from GBIF
         mask_avicennia = df['species'].astype(str).str.strip() == 'Avicennia marina'
         df.loc[mask_avicennia, 'Matching EFG, Biome'] = 'MFT1.2'
         if 'Matching EFG, Biome (full name)' in df.columns:
@@ -165,7 +192,11 @@ def run_environment_pipeline():
     # =========================================================
     # STEP 8: EXPORT
     # =========================================================
-    print(f"8. Converting to spatial format...")
+    print(f"8. Duplicating coordinates and converting to spatial format...")
+    
+    df['lat'] = df['decimallatitude']
+    df['long'] = df['decimallongitude']
+
     gdf = gpd.GeoDataFrame(
         df, 
         geometry=gpd.points_from_xy(df['decimallongitude'], df['decimallatitude']),
