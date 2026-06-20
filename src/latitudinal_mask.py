@@ -100,12 +100,13 @@ def run_latitudinal_pipeline():
     # Pre-calculate base group masks so rules don't cascade and overwrite each other
     is_t1 = df['Matching EFG, Biome'].str.startswith('T1.') | (df['Matching EFG, Biome'] == 'T1')
     is_t2 = df['Matching EFG, Biome'].str.startswith('T2.') | (df['Matching EFG, Biome'] == 'T2')
+    is_t3 = df['Matching EFG, Biome'].str.startswith('T3.') | (df['Matching EFG, Biome'] == 'T3')
+    is_t4 = df['Matching EFG, Biome'].str.startswith('T4.') | (df['Matching EFG, Biome'] == 'T4')
     is_tf = df['Matching EFG, Biome'].isin(['TF1.6', 'TF1.7'])
     
     lat = df['decimallatitude']
 
     # --- RULE 3: Drop TF1.6 / TF1.7 if inside Tropics ---
-    # Doing this first so we can completely drop the rows
     mask_drop_tf = is_tf & (lat < bounds['Tropical North']) & (lat > bounds['Tropical South'])
     drop_count = mask_drop_tf.sum()
     df = df[~mask_drop_tf].copy()
@@ -115,6 +116,8 @@ def run_latitudinal_pipeline():
     lat = df['decimallatitude']
     is_t1 = df['Matching EFG, Biome'].str.startswith('T1.') | (df['Matching EFG, Biome'] == 'T1')
     is_t2 = df['Matching EFG, Biome'].str.startswith('T2.') | (df['Matching EFG, Biome'] == 'T2')
+    is_t3 = df['Matching EFG, Biome'].str.startswith('T3.') | (df['Matching EFG, Biome'] == 'T3')
+    is_t4 = df['Matching EFG, Biome'].str.startswith('T4.') | (df['Matching EFG, Biome'] == 'T4')
 
     # --- RULE 1: T1 found outside Tropics -> Convert to T2 ---
     mask_r1 = is_t1 & ((lat > bounds['Tropical North']) | (lat < bounds['Tropical South']))
@@ -126,7 +129,6 @@ def run_latitudinal_pipeline():
     print(f"  > Converted {mask_r1.sum():,} out-of-bounds T1 points to T2.")
 
     # --- RULE 2: T2 found inside Tropics -> Convert to T1 ---
-    # Using AND because it must be between the North Close and South Close lines
     mask_r2 = is_t2 & (lat < bounds['Boreal N Close']) & (lat > bounds['Boreal S Close'])
     df.loc[mask_r2, 'Matching EFG, Biome'] = 'T1'
     if 'Matching EFG, Biome (full name)' in df.columns:
@@ -143,6 +145,15 @@ def run_latitudinal_pipeline():
     df.loc[mask_r4, 'pixel value'] = '#D7D7D7'
     df.loc[mask_r4, 'latitudinal correction'] = True
     print(f"  > Converted {mask_r4.sum():,} out-of-bounds T2 points to T6.")
+
+    # --- RULE 5: T3/T4 found in Polar regions -> Convert to T6 ---
+    mask_r5 = (is_t3 | is_t4) & ((lat > bounds['Polar North']) | (lat < bounds['Polar South']))
+    df.loc[mask_r5, 'Matching EFG, Biome'] = 'T6'
+    if 'Matching EFG, Biome (full name)' in df.columns:
+        df.loc[mask_r5, 'Matching EFG, Biome (full name)'] = 'Polar/alpine (cryogenic)'
+    df.loc[mask_r5, 'pixel value'] = '#D7D7D7'
+    df.loc[mask_r5, 'latitudinal correction'] = True
+    print(f"  > Converted {mask_r5.sum():,} out-of-bounds T3/T4 points to T6.")
 
     print("\n5. Generating 'AFTER' plot...")
     create_distribution_plot(df, 'AFTER CORRECTION: Global Latitudinal Distribution', PLOT_AFTER)
