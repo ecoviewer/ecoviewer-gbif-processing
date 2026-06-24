@@ -65,7 +65,7 @@ def run_environment_pipeline():
         print("  > Warning: .geo column not found. Continuing with existing coordinates.")
 
     # =========================================================
-    # STEP 4: ARIDITY INDEX FILTERING (UPDATED)
+    # STEP 4: ARIDITY INDEX FILTERING (UPDATED FOR COLD DESERTS)
     # =========================================================
     print("\n4. Applying Aridity Index Rules...")
     
@@ -78,10 +78,11 @@ def run_environment_pipeline():
     if aridity_col in df.columns:
         is_dry = df[aridity_col] <= 300
         
-        # 1. Identify groups allowed to survive completely unmodified
+        # 1. Identify groups allowed to survive completely unmodified (Added T6)
         is_protected = (
             df['Matching EFG, Biome'].str.startswith('TF') | 
             df['Matching EFG, Biome'].str.startswith('T7') | 
+            df['Matching EFG, Biome'].str.startswith('T6') | 
             (df['Matching EFG, Biome'] == 'T5.5')
         )
         
@@ -96,8 +97,12 @@ def run_environment_pipeline():
         df.loc[mask_t5_convert, 'pixel value'] = '#DFB664'
         print(f"  > Standardized {mask_t5_convert.sum():,} dry T5 sub-group points to the main Desert Biome.")
         
-        # 3. Drop any other non-applicable points within the dry mask
-        mask_to_drop = is_dry & (~is_protected) & (~is_convertible_t5)
+        # Pull latitude to physically exempt polar zones from the hyper-arid drop rule
+        lat_for_aridity = df['decimallatitude']
+        in_polar_zone = (lat_for_aridity > bounds['Polar North']) | (lat_for_aridity < bounds['Polar South'])
+
+        # 3. Drop any other non-applicable points within the dry mask (Excluding Polar points)
+        mask_to_drop = is_dry & (~is_protected) & (~is_convertible_t5) & (~in_polar_zone)
         
         initial_count = len(df)
         df = df[~mask_to_drop].copy()
@@ -188,7 +193,24 @@ def run_environment_pipeline():
     print("-" * 50)
     print(f" FINAL RETAINED POINTS:    {summary_stats['final_points']:>10,}")
     print("="*50 + "\n")
-
+    
+    # =========================================================
+    # STEP 7.5: EARTH ENGINE COLOR MAPPING
+    # =========================================================
+    print("\n7.5 Creating Numeric IDs for Earth Engine styling...")
+    
+    unique_biomes = df[['Matching EFG, Biome', 'pixel value']].drop_duplicates().dropna().reset_index(drop=True)
+    unique_biomes['biome_id'] = unique_biomes.index + 1
+    df = df.merge(unique_biomes[['Matching EFG, Biome', 'biome_id']], on='Matching EFG, Biome', how='left')
+    
+    # --- The Magic Print Statement ---
+    print("\n🚨 COPY AND PASTE THIS DICTIONARY INTO EARTH ENGINE 🚨")
+    print("var myCategories = {")
+    for _, row in unique_biomes.iterrows():
+        print(f"  '{row['biome_id']}': '{row['pixel value']}',")
+    print("};")
+    print("🚨 --------------------------------------- 🚨\n")
+    
     # =========================================================
     # STEP 8: EXPORT
     # =========================================================

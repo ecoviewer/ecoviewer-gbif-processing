@@ -12,10 +12,10 @@ ROOT_DIR = os.path.dirname(SRC_DIR)
 MASK_FILES_PATTERN = os.path.join(ROOT_DIR, 'data', 'outputs', 'urban_mask', 'GBIF_Cropland_Plantation_Urban_*.csv')
 
 # 3. Path to your original 1.5 million row dataset
-ORIGINAL_DATA_CSV = os.path.join(ROOT_DIR, 'data', 'outputs', 'Global_Outputs_20260617_v2', 'Global_indicators_mapped_clean.csv') 
+ORIGINAL_DATA_CSV = os.path.join(ROOT_DIR, 'data', 'outputs', 'Global_Outputs_20260617_v2', 'Global_indicators_mapped_clean.csv') #DN-- Takes the input from indicator script, needs to be changed
 
 # 4. Create the new masked outputs folder
-OUTPUT_DIR = os.path.join(ROOT_DIR, 'data', 'outputs', 'outputs_masked')
+OUTPUT_DIR = os.path.join(ROOT_DIR, 'data', 'outputs', 'outputs_masked') #DN needs to be changed
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 # 5. Paths for the final merged outputs

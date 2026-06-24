@@ -1,0 +1,138 @@
+EFG,EFG_Code,EFG_Name,PixelValue,HexCode
+No Data,0,No Data,0,#FFFFFF
+T1.1 Tropical/Subtropical lowland rainforests,T1.1,Tropical/Subtropical lowland rainforests,1,#32A06B
+T1.2 Tropical/Subtropical dry forests and thickets,T1.2,Tropical/Subtropical dry forests and thickets,2,#52BC85
+T1.3 Tropical/Subtropical montane rainforests,T1.3,Tropical/Subtropical montane rainforests,3,#6FD9A1
+T1.4 Tropical heath forests,T1.4,Tropical heath forests,4,#8DF7BD
+T2.1 Boreal and temperate high montane forests and woodlands,T2.1,Boreal and temperate high montane forests and woodlands,7,#006051
+T2.2 Deciduous temperate forests,T2.2,Deciduous temperate forests,8,#329483
+T2.3 Oceanic cool temperate rainforests,T2.3,Oceanic cool temperate rainforests,9,#54B2A0
+T2.4 Warm temperate laurophyll forests,T2.4,Warm temperate laurophyll forests,10,#73D1BE
+T2.5 Temperate pyric humid forests,T2.5,Temperate pyric humid forests,11,#92F0DD
+T2.6 Temperate pyric sclerophyll forests and woodlands,T2.6,Temperate pyric sclerophyll forests and woodlands,12,#BBF0E5
+T3.1 Seasonally dry tropical shrublands,T3.1,Seasonally dry tropical shrublands,16,#34878E
+T3.2 Seasonally dry temperate heath and shrublands,T3.2,Seasonally dry temperate heath and shrublands,17,#57A7AE
+T3.3 Cool temperate heathlands,T3.3,Cool temperate heathlands,18,#78C8CF
+"T3.4 Young rocky pavements, lava flows and screes",T3.4,"Young rocky pavements, lava flows and screes",19,#9AEAF1
+T4.1 Trophic savannas,T4.1,Trophic savannas,22,#FFD21C
+T4.2 Pyric tussock savannas,T4.2,Pyric tussock savannas,23,#FFA134
+T4.3 Hummock savannas,T4.3,Hummock savannas,24,#FF9110
+T4.4 Temperate woodlands,T4.4,Temperate woodlands,25,#FF6B00
+T4.5 Temperate subhumid grasslands,T4.5,Temperate subhumid grasslands,26,#D36E00
+T5.1 Semi-desert steppe,T5.1,Semi-desert steppe,30,#FFD279
+T5.2 Succulent or Thorny deserts and semi-deserts,T5.2,Succulent or Thorny deserts and semi-deserts,31,#EEC471
+T5.3 Sclerophyll hot deserts and semi-deserts,T5.3,Sclerophyll hot deserts and semi-deserts,32,#B38E3E
+T5.4 Cool deserts and semi-deserts,T5.4,Cool deserts and semi-deserts,33,#886716
+T5.5 Hyper-arid deserts,T5.5,Hyper-arid deserts,34,#5E4300
+"T6.1 Ice sheets, glaciers and perennial snowfields",T6.1,"Ice sheets, glaciers and perennial snowfields",38,#DBDBDB
+"T6.2 Polar/alpine cliffs, screes, outcrops and lava flows",T6.2,"Polar/alpine cliffs, screes, outcrops and lava flows",39,#C7C7C7
+T6.3 Polar tundra and deserts,T6.3,Polar tundra and deserts,40,#B8B8B8
+T6.4 Temperate alpine grasslands and shrublands,T6.4,Temperate alpine grasslands and shrublands,41,#A8A8A8
+T6.5 Tropical alpine grasslands and herbfields,T6.5,Tropical alpine grasslands and herbfields,42,#949494
+T7.1 Annual croplands,T7.1,Annual croplands,46,#FF14A1
+T7.2 Sown pastures and fields,T7.2,Sown pastures and fields,47,#CA0079
+T7.3 Plantations,T7.3,Plantations,48,#AA005F
+T7.4 Urban and industrial ecosystems,T7.4,Urban and industrial ecosystems,49,#8B0047
+T7.5 Derived semi-natural pastures and old fields,T7.5,Derived semi-natural pastures and old fields,50,#6C0030
+S1.1 Aerobic caves,S1.1,Aerobic caves,54,#C0AC14
+S1.2 Endolithic systems,S1.2,Endolithic systems,55,#F2D918
+S2.1 Anthropogenic subterranean voids,S2.1,Anthropogenic subterranean voids,57,#9DBF3D
+SF1.1 Underground streams and pools,SF1.1,Underground streams and pools,59,#D49686
+SF1.2 Groundwater ecosystems,SF1.2,Groundwater ecosystems,60,#FFB5A1
+SF2.1 Water pipes and subterranean canals,SF2.1,Water pipes and subterranean canals,62,#FB9DC4
+SF2.2 Flooded mines and other voids,SF2.2,Flooded mines and other voids,63,#C67E8C
+SM1.1 Anchialine caves,SM1.1,Anchialine caves,65,#569B49
+SM1.2 Anchialine pools,SM1.2,Anchialine pools,66,#008767
+SM1.3 Sea caves,SM1.3,Sea caves,67,#006E79
+TF1.1 Tropical flooded forests and peat forests,TF1.1,Tropical flooded forests and peat forests,70,#73B898
+TF1.2 Subtropical/temperate forested wetlands,TF1.2,Subtropical/temperate forested wetlands,71,#8EE3BB
+TF1.3 Permanent marshes,TF1.3,Permanent marshes,72,#9FFFD3
+TF1.4 Seasonal floodplain marshes,TF1.4,Seasonal floodplain marshes,73,#93D699
+TF1.5 Episodic arid floodplains,TF1.5,Episodic arid floodplains,74,#AFD6B3
+"TF1.6 Boreal, temperate and montane peat bogs",TF1.6,"Boreal, temperate and montane peat bogs",75,#C1F195
+TF1.7 Boreal and temperate fens,TF1.7,Boreal and temperate fens,76,#DFF1CF
+F1.1 Permanent upland streams,F1.1,Permanent upland streams,81,#C4FFBE
+F1.2 Permanent lowland rivers,F1.2,Permanent lowland rivers,82,#ABF5A3
+F1.3 Freeze-thaw rivers and streams,F1.3,Freeze-thaw rivers and streams,83,#7EE5AA
+F1.4 Seasonal upland streams,F1.4,Seasonal upland streams,84,#51D4B1
+F1.5 Seasonal lowland rivers,F1.5,Seasonal lowland rivers,85,#47BA9B
+F1.6 Episodic arid rivers,F1.6,Episodic arid rivers,86,#3A9C82
+F1.7 Large lowland rivers,F1.7,Large lowland rivers,87,#2D7763
+F2.1 Large permanent freshwater lakes,F2.1,Large permanent freshwater lakes,92,#D6FBFF
+F2.2 Small permanent freshwater lakes,F2.2,Small permanent freshwater lakes,93,#B8F8FF
+F2.3 Seasonal freshwater lakes,F2.3,Seasonal freshwater lakes,94,#85F3FF
+F2.4 Freeze-thaw freshwater lakes,F2.4,Freeze-thaw freshwater lakes,95,#42ECFF
+F2.5 Ephemeral freshwater lakes,F2.5,Ephemeral freshwater lakes,96,#1CD8ED
+F2.6 Permanent salt and soda lakes,F2.6,Permanent salt and soda lakes,97,#19BED1
+F2.7 Ephemeral salt lakes,F2.7,Ephemeral salt lakes,98,#009DB1
+F2.8 Artesian springs and oases,F2.8,Artesian springs and oases,99,#007A8A
+F2.9 Geothermal pools and wetlands,F2.9,Geothermal pools and wetlands,100,#005C6B
+F2.10 Subglacial lakes,F2.10,Subglacial lakes,101,#004252
+F3.1 Large reservoirs,F3.1,Large reservoirs,107,#C4FFBE
+F3.2 Constructed lacustrine wetlands,F3.2,Constructed lacustrine wetlands,108,#ABF5A3
+F3.3 Rice paddies,F3.3,Rice paddies,109,#90DAA0
+F3.4 Freshwater aquafarms,F3.4,Freshwater aquafarms,110,#51D4B1
+"F3.5 Canals, ditches and drains",F3.5,"Canals, ditches and drains",111,#47BA9B
+FM1.1 Deepwater coastal inlets,FM1.1,Deepwater coastal inlets,115,#D43A99
+FM1.2 Permanently open riverine estuaries and bays,FM1.2,Permanently open riverine estuaries and bays,116,#F960BA
+FM1.3 Intermittently closed and open lakes and lagoons,FM1.3,Intermittently closed and open lakes and lagoons,117,#FF83DC
+M1.1 Seagrass meadows,M1.1,Seagrass meadows,120,#F1EBFF
+M1.2 Kelp forests,M1.2,Kelp forests,121,#E9E0FF
+M1.3 Photic coral reefs,M1.3,Photic coral reefs,122,#E0D3FF
+M1.4 Shellfish beds and reefs,M1.4,Shellfish beds and reefs,123,#C0B5FF
+M1.5 Photo-limited marine animal forests,M1.5,Photo-limited marine animal forests,124,#A197FE
+M1.6 Subtidal rocky reefs,M1.6,Subtidal rocky reefs,125,#897CFE
+M1.7 Subtidal sand beds,M1.7,Subtidal sand beds,126,#6F66EE
+M1.8 Subtidal mud plains,M1.8,Subtidal mud plains,127,#5E56D1
+M1.9 Upwelling zones,M1.9,Upwelling zones,128,#5653A6
+M1.10 Rhodolith/MaÃ«rl beds,M1.10,Rhodolith/MaÃ«rl beds,129,#3C3973
+M2.1 Epipelagic ocean waters,M2.1,Epipelagic ocean waters,135,#CEA8FE
+M2.2 Mesopelagic ocean water,M2.2,Mesopelagic ocean water,136,#B781FA
+M2.3 Bathypelagic ocean waters,M2.3,Bathypelagic ocean waters,137,#A474E0
+M2.4 Abyssopelagic ocean waters,M2.4,Abyssopelagic ocean waters,138,#9569CC
+M2.5 Sea ice,M2.5,Sea ice,139,#704F99
+M3.1 Continental and island slopes,M3.1,Continental and island slopes,143,#1B7693
+M3.2 Submarine canyons,M3.2,Submarine canyons,144,#2192B5
+M3.3 Abyssal plains,M3.3,Abyssal plains,145,#27AED8
+"M3.4 Seamounts, ridges and plateaus",M3.4,"Seamounts, ridges and plateaus",146,#52BEE0
+M3.5 Deepwater biogenic beds,M3.5,Deepwater biogenic beds,147,#9CDAED
+M3.6 Hadal trenches and troughs,M3.6,Hadal trenches and troughs,148,#A8EAFF
+M3.7 Chemosynthetic-based-ecosystems (CBE),M3.7,Chemosynthetic-based-ecosystems (CBE),149,#DBF7FF
+M4.1 Submerged artificial structures,M4.1,Submerged artificial structures,154,#994A8E
+M4.2 Marine aquafarms,M4.2,Marine aquafarms,155,#7B2E72
+MT1.1 Rocky shorelines,MT1.1,Rocky shorelines,157,#8782D2
+MT1.2 Muddy shorelines,MT1.2,Muddy shorelines,158,#A49EF0
+MT1.3 Sandy shorelines,MT1.3,Sandy shorelines,159,#C2BAFF
+MT1.4 Boulder and cobble shores,MT1.4,Boulder and cobble shores,160,#E0D7FF
+MT2.1 Coastal shrublands and grasslands,MT2.1,Coastal shrublands and grasslands,163,#726BDA
+MT2.2 Large seabird and pinniped colonies,MT2.2,Large seabird and pinniped colonies,164,#5651A6
+MT3.1 Artificial shorelines,MT3.1,Artificial shorelines,166,#CEC9FF
+MFT1.1 Coastal river deltas,MFT1.1,Coastal river deltas,168,#AC676D
+MFT1.2 Intertidal forests and shrublands,MFT1.2,Intertidal forests and shrublands,169,#89474E
+MFT1.3 Coastal saltmarshes and reedbeds,MFT1.3,Coastal saltmarshes and reedbeds,170,#672931
+NA No Data,NA,No Data,255,#FFFFFF
+T1 Tropical-subtropical forests,T1,Tropical-subtropical forests,1,#008452
+T2 Temperate-boreal forests and woodlands,T2,Temperate-boreal forests and woodlands,2,#007767
+T3 Shrublands and shrubby woodlands,T3,Shrublands and shrubby woodlands,3,#00686F
+T4 Savannas and grasslands,T4,Savannas and grasslands,4,#FFC01C
+T5 Deserts and semi-deserts,T5,Deserts and semi-deserts,5,#DFB664
+T6 Polar/alpine (cryogenic),T6,Polar/alpine (cryogenic),6,#D7D7D7
+T7 Intensive land-use,T7,Intensive land-use,7,#EA1394
+S1 Subterranean lithic,S1,Subterranean lithic,8,#A08F26
+S2 Anthropogenic subterranean voids,S2,Anthropogenic subterranean voids,9,#728B2C
+SF1 Subterranean freshwaters,SF1,Subterranean freshwaters,10,#EAA694
+SF2 Anthropogenic subterranean freshwaters,SF2,Anthropogenic subterranean freshwaters,11,#FFC2FF
+SM1 Subterranean tidal,SM1,Subterranean tidal,12,#81A23B
+TF1 Palustrine wetlands,TF1,Palustrine wetlands,13,#629A8E
+F1 Rivers and streams,F1,Rivers and streams,14,#17C2B6
+F2 Lakes,F2,Lakes,15,#1AC5D9
+F3 Artificial wetlands,F3,Artificial wetlands,16,#6BCE81
+FM1 Semi-confined transitional waters,FM1,Semi-confined transitional waters,17,#B00079
+M1 Marine shelf,M1,Marine shelf,18,#6460C0
+M2 Pelagic ocean waters,M2,Pelagic ocean waters,19,#8860BA
+M3 Deep sea floors,M3,Deep sea floors,20,#055869
+M4 Anthropogenic marine,M4,Anthropogenic marine,21,#B766AB
+MT1 Shorelines,MT1,Shorelines,22,#6B68B5
+MT2 Supralittoral coastal,MT2,Supralittoral coastal,23,#8E89DA
+MT3 Anthropogenic shorelines,MT3,Anthropogenic shorelines,24,#B3ACFF
+MFT1 Brackish tidal,MFT1,Brackish tidal,25,#D1888E

@@ -4,7 +4,7 @@ Tropical North:  36.72377
 Boreal S End:    -55.97
 Boreal S Close:  -27.7549 
 
-Boreal N Close:  28.00471 
+Boreal N Close:  22.84026
 Boreal N End:    71.23483 
 
 Polar South:     -48.79943 

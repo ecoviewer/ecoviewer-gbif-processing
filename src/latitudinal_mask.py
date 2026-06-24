@@ -9,12 +9,12 @@ SRC_DIR = os.path.dirname(os.path.abspath(__file__))
 ROOT_DIR = os.path.dirname(SRC_DIR)
 
 # Input Paths
-INPUT_CSV = os.path.join(ROOT_DIR, 'data', 'outputs', 'outputs_masked', 'Global_Final_with_Masks.csv')
-BOUNDS_FILE = os.path.join(ROOT_DIR, 'data', 'mapping', 'latitudinal_bounds.txt')
+INPUT_CSV = os.path.join(ROOT_DIR, 'data', 'outputs', 'outputs_masked', 'Global_Final_with_Masks.csv') # DN Takes the anthropogenic mask values
+BOUNDS_FILE = os.path.join(ROOT_DIR, 'data', 'mapping', 'latitudinal_bounds.txt') #DN CRITICAL CODE-- Takes a txt file of latitudinal bounds to filter conditionally
 
 # Output Paths
 OUTPUT_DIR = os.path.join(ROOT_DIR, 'data', 'outputs', 'latitudinal_mask_outputs')
-PLOT_DIR = os.path.join(OUTPUT_DIR, 'plots')
+PLOT_DIR = os.path.join(OUTPUT_DIR, 'plots') #DN Charts out before and after plots of latitudinal bounds
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 os.makedirs(PLOT_DIR, exist_ok=True)

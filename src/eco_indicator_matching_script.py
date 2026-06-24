@@ -18,7 +18,7 @@ GCP_PROJECT_ID = "geo-global-ecosystems-atlas"
 GBIF_BQ_TABLE = "geo-global-ecosystems-atlas.gbif.gbif_2016-2026_basisofrec_spat_thinned" 
 
 # 3. LOCAL FILES
-MAPPING_CSV = os.path.join(ROOT_DIR, 'data', 'mapping', 'eco_ind_sp_list.csv')
+MAPPING_CSV = os.path.join(ROOT_DIR, 'data', 'mapping', 'eco_ind_sp_list_v2_230626.csv') #DN -- THIS SECTION IS CRITICAL AS WELL AS BIGQUERY CONFIG.
 
 # 4. AUTO-FOLDER GENERATION
 OUTPUT_FOLDER_NAME = f"{REGION_NAME}_Outputs_{datetime.now().strftime('%Y%m%d')}"
