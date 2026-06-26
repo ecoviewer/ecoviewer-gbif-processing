@@ -17,7 +17,7 @@ GCP_PROJECT_ID = "geo-global-ecosystems-atlas"
 GBIF_BQ_TABLE = "geo-global-ecosystems-atlas.gbif.gbif_2016-2026_basisofrec_spat_thinned" 
 
 # --- Input Files ---
-MAPPING_CSV = os.path.join(ROOT_DIR, 'data', 'mapping', 'eco_ind_sp_list_v2_230626.csv')
+MAPPING_CSV = os.path.join(ROOT_DIR, 'data', 'mapping', 'eco_indicator_sp_list_latest.csv')
 
 # --- Output Directories ---
 OUTPUT_FOLDER_NAME = f"{REGION_NAME}_Pipeline1_Pre_EE_{datetime.now().strftime('%Y%m%d')}"
