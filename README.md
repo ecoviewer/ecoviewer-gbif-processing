@@ -4,6 +4,8 @@ This repository houses the automated data processing pipeline for filtering, cla
 
 >  This repository demonstrates the backend data methodology powering the live EcoViewer application.
 
+🔗 **[👉 View the Live Interactive App Here](https://ecoviewer.org/app/)**
+
 ## ⚠️ Important Execution Note for Reviewers
 While this codebase is provided under the MIT license to allow for a full technical review of our methodology, spatial joins, and processing logic, **these scripts cannot be executed directly in a local environment or third-party Google Earth Engine (GEE) Code Editor**. 
 
